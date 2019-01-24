@@ -81,9 +81,10 @@ public class MainActivity extends AppCompatActivity {
         Log.e(TAG, "Firebase reg id: " + regId);
 
         if (!TextUtils.isEmpty(regId))
-            txtRegId.setText("Firebase Reg Id: " + regId);
+            Toast.makeText(getApplicationContext(),"Firebase Reg Id: " + regId,Toast.LENGTH_SHORT).show();
         else
-            txtRegId.setText("Firebase Reg Id is not received yet!");
+            Toast.makeText(getApplicationContext(),"Firebase Reg Id is not received yet!",Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
