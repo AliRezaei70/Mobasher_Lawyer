@@ -1,4 +1,4 @@
-package ir.mobasher.app.lawyer;
+package ir.mobasher.app.lawyer.ativity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -31,6 +31,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ir.mobasher.app.lawyer.R;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
