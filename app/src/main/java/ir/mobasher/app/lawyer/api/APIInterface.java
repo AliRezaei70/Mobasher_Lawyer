@@ -15,6 +15,6 @@ public interface APIInterface {
 
 
     @POST("/api/v1/auth/login")
-    Call<LoginRequest> loginUser(@Body LoginRequest loginRequest, Callback<LoginResponse> response);
+    Call<LoginResponse> loginUser(@Body LoginRequest loginRequest/*, Callback<LoginResponse> response*/);
 
 }

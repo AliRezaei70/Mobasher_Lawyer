@@ -90,7 +90,8 @@ public class MainActivity extends AppCompatActivity {
         loginRequest.setPhoneNumber("09326549874");
 
         APIInterface service = RetrofitClientInstance.getRetrofitInstance().create(APIInterface.class);
-        service.loginUser(loginRequest, new Callback<LoginResponse>() {
+        Call<LoginResponse> requestCall = service.loginUser(loginRequest);
+        requestCall.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 response.body();
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                t.getMessage();
+
             }
         });
 
