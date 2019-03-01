@@ -2,8 +2,8 @@
 # generated on 2018/08/03 08:28:44
 #
 # --table-start--
-dataClass=ir.mobasher.app.lawyer.model.users.User
-tableName=user
+dataClass=ir.mobasher.app.lawyer.api.login.LoginRequest
+tableName=userNum
 # --table-fields-start--
 # --field-start--
 fieldName=id

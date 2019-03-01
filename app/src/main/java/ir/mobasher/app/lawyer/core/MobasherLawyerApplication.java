@@ -20,9 +20,10 @@ public class MobasherLawyerApplication extends Application {
     public void onCreate() {
         super.onCreate();
         MobasherLawyerApplication.context = getApplicationContext();
-
         //FontUtil.getInstance().init(getApplicationContext().getAssets(), getApplicationContext().getResources());
     }
+
+
 
     @Override
     public void onTerminate() {

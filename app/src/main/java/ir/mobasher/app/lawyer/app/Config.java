@@ -4,6 +4,7 @@ public class Config {
 
     // global topic to receive app wide push notifications
     public static final String TOPIC_GLOBAL = "global";
+    public static final String BASE_URL = "http://31.184.135.213:8080";
 
     // broadcast receiver intent filters
     public static final String REGISTRATION_COMPLETE = "registrationComplete";

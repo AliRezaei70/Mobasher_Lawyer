@@ -10,7 +10,7 @@ import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import ir.mobasher.app.lawyer.model.users.User;
+import ir.mobasher.app.lawyer.api.login.LoginRequest;
 
 
 /**
@@ -34,7 +34,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
    // private Dao<RecordModel, Integer> studentRecordModelIntegerDao = null;
 
-    private Dao<User, Integer> usersDao = null;
+    private Dao<LoginRequest, Integer> usersDao = null;
 
 
     private static final AtomicInteger usageCounter = new AtomicInteger(0);
@@ -62,7 +62,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         try {
             Log.i(DatabaseHelper.class.getName(), "onCreate");
 
-            TableUtils.createTable(connectionSource, User.class);
+            TableUtils.createTable(connectionSource, LoginRequest.class);
 
         } catch (SQLException e) {
             Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
@@ -82,9 +82,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         }
     }
 
-    public Dao<User, Integer> getUsersDao() throws SQLException {
+    public Dao<LoginRequest, Integer> getUsersDao() throws SQLException {
         if (usersDao == null) {
-            usersDao = getDao(User.class);
+            usersDao = getDao(LoginRequest.class);
         }
         return usersDao;
     }

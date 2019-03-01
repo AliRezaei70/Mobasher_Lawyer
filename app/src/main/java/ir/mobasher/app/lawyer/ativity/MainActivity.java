@@ -18,16 +18,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.gson.JsonObject;
 
 import ir.mobasher.app.lawyer.R;
+import ir.mobasher.app.lawyer.api.APIInterface;
+import ir.mobasher.app.lawyer.api.login.LoginResponse;
 import ir.mobasher.app.lawyer.app.Config;
+import ir.mobasher.app.lawyer.api.login.LoginRequest;
+import ir.mobasher.app.lawyer.network.RetrofitClientInstance;
 import ir.mobasher.app.lawyer.utils.NotificationUtils;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     private TextView txtRegId, txtMessage;
+
+    APIInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +80,29 @@ public class MainActivity extends AppCompatActivity {
         };
 
         displayFirebaseRegId();
+        test();
+    }
+
+    public void test(){
+
+
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.setPhoneNumber("09326549874");
+
+        APIInterface service = RetrofitClientInstance.getRetrofitInstance().create(APIInterface.class);
+        service.loginUser(loginRequest, new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                response.body();
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                t.getMessage();
+            }
+        });
+
+
     }
 
     // Fetches reg id from shared preferences
