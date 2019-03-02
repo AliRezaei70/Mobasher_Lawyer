@@ -1,6 +1,7 @@
 package ir.mobasher.app.lawyer.network;
 
 import ir.mobasher.app.lawyer.app.Config;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -19,4 +20,5 @@ public class RetrofitClientInstance {
         return retrofit;
 
     }
+
 }

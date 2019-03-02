@@ -16,9 +16,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import ir.mobasher.app.lawyer.R;
 import ir.mobasher.app.lawyer.api.APIInterface;
@@ -85,21 +88,25 @@ public class MainActivity extends AppCompatActivity {
 
     public void test(){
 
-
-        LoginRequest loginRequest = new LoginRequest();
-        loginRequest.setPhoneNumber("09326549874");
-
         APIInterface service = RetrofitClientInstance.getRetrofitInstance().create(APIInterface.class);
-        Call<LoginResponse> requestCall = service.loginUser(loginRequest);
-        requestCall.enqueue(new Callback<LoginResponse>() {
+        Call<LoginResponse> responseCall = service.loginUser("09152456321");
+        responseCall.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                response.body();
+                if (response.isSuccessful()){
+                    LoginResponse loginResponse = response.body();
+                    String userId = loginResponse.getUserId();
+                    Log.e("resp", loginResponse.getMessage());
+                }else {
+                    LoginResponse loginResponse = response.body();
+                    Log.e("resp", loginResponse.getMessage());
+                }
+
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-
+                t.getMessage();
             }
         });
 
