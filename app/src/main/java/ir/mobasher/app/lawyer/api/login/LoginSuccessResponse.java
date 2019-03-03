@@ -2,7 +2,7 @@ package ir.mobasher.app.lawyer.api.login;
 
 import com.google.gson.annotations.SerializedName;
 
-public class LoginResponse {
+public class LoginSuccessResponse {
 
     @SerializedName("status")
     private Integer status;
