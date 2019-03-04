@@ -1,6 +1,7 @@
 package ir.mobasher.app.lawyer.api;
 
 import ir.mobasher.app.lawyer.api.login.LoginSuccessResponse;
+import ir.mobasher.app.lawyer.api.validationCode.ValidationSuccessResponse;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -12,5 +13,11 @@ public interface APIInterface {
     @FormUrlEncoded
     @POST("/api/v1/auth/login")
     Call<LoginSuccessResponse> loginUser(@Field("phoneNumber") String phoneNumber);
+
+    //Post ValidationCode
+    @FormUrlEncoded
+    @POST("/api/v1/client/auth/validateCode")
+    Call<ValidationSuccessResponse> validateUser(@Field("userid") String userId, @Field("code") String code);
+
 
 }
